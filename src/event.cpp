@@ -115,7 +115,8 @@ void spacePirates::BattleScenario(std::unique_ptr<IShip> &ship)
         std::cout<<"You won the battle against space pirates.\n";
     }
 }
-void spacePirates::BargainScenario(std::unique_ptr<IShip> &ship) {
+void spacePirates::BargainScenario(std::unique_ptr<IShip> &ship)
+{
     int randNum{0};
     randNum = std::rand() % 3;
 
@@ -129,16 +130,19 @@ void spacePirates::BargainScenario(std::unique_ptr<IShip> &ship) {
     {
         std::cout << "Remaining ";
         if (randNum == 0) {
+            int minusGold=10;
             if (ship->getMoney() >= 0) {
-                ship->giveGold(10);
+                ship->giveGold(minusGold);
                 ship->moneyDisplay();
             }
 
         } else if (randNum == 1) {
-            ship->giveGold(20);
+            int minusGold=20;
+            ship->giveGold(minusGold);
             ship->moneyDisplay();
         } else {
-            ship->giveGold(30);
+            int minusGold=30;
+            ship->giveGold(minusGold);
             ship->moneyDisplay();
         }
     }

@@ -118,24 +118,31 @@ void spacePirates::BattleScenario(std::unique_ptr<IShip> &ship)
 void spacePirates::BargainScenario(std::unique_ptr<IShip> &ship) {
     int randNum{0};
     randNum = std::rand() % 3;
-    std::cout<<"Remaining ";
-    if(randNum==0)
+
+    if(ship->getMoney()<=0)
     {
-        ship->giveGold(10);
-        ship->moneyDisplay();
-    }
-    else if(randNum==1)
-    {
-        ship->giveGold(20);
-        ship->moneyDisplay();
+        std::cout << "Not enough money to give please choose the run or battle option \n";
+    spacePirates obj;
+    obj.ChosenRunBattleOrBargain(ship);
     }
     else
     {
-        ship->giveGold(30);
-        ship->moneyDisplay();
+        std::cout << "Remaining ";
+        if (randNum == 0) {
+            if (ship->getMoney() >= 0) {
+                ship->giveGold(10);
+                ship->moneyDisplay();
+            }
+
+        } else if (randNum == 1) {
+            ship->giveGold(20);
+            ship->moneyDisplay();
+        } else {
+            ship->giveGold(30);
+            ship->moneyDisplay();
+        }
     }
 }
-
 void spacePirates::ChosenRunBattleOrBargain(std::unique_ptr<IShip> &ship) {
     spacePirates obj;
     int optionChooser;
